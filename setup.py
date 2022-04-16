@@ -6,8 +6,8 @@ setup(
     packages=find_packages(),
     setup_requires=['cocotb'],
     install_requires=[
-        'cocotb-test',
-        'amaranth @ git+https://github.com/amaranth-lang/amaranth.git#egg=amaranth',
+        'cocotb-test>=0.2.2',
+        'amaranth',
         'amaranth-yosys'
     ]
 )

@@ -11,13 +11,16 @@ import inspect
 class Icarus_g2005(Icarus):
     def compile_command(self):
 
+        compile_args = self.compile_args + self.verilog_compile_args
+
         cmd_compile = (
             ["iverilog", "-o", self.sim_file, "-D", "COCOTB_SIM=1", "-s",
-             self.toplevel, "-g2005"]
+             self.toplevel_module, "-g2005"]
             + self.get_define_commands(self.defines)
             + self.get_include_commands(self.includes)
-            + self.compile_args
-            + self.verilog_sources
+            + self.get_parameter_commands(self.parameters)
+            + compile_args
+            + self.verilog_sources_flat
         )
 
         return cmd_compile
